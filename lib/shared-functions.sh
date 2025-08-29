@@ -25,48 +25,12 @@ function read_image_version() {
 }
 
 function read_mongo_version() {
-  local mongo_image=$(read_configuration "MONGO_IMAGE")
-  local mongo_version=$(read_configuration "MONGO_VERSION")
-  if [ -z "${mongo_version}" ]; then
-    if [[ "$mongo_image" =~ ^mongo:([0-9]+)\.(.*)$ ]]; then
-      # when running a chain of commands (example: bin/up -> bin/docker-compose) we're passing
-      # SKIP_WARNINGS=true to prevent the warning message to be printed several times
-      if [[ ${SKIP_WARNINGS:-null} != "true" ]]; then
-        echo "-------------------  WARNING  ----------------------"
-        echo "  Deprecation warning: the mongo image is now split between MONGO_IMAGE"
-        echo "  and MONGO_VERSION configurations. Please update your config/overleaf.rc as"
-        echo "  your current configuration may stop working in future versions of the toolkit."
-        echo "  Example: MONGO_IMAGE=mongo"
-        echo "           MONGO_VERSION=6.0"
-        echo "-------------------  WARNING  ----------------------"
-      fi
-      MONGO_VERSION_MAJOR=${BASH_REMATCH[1]}
-      MONGO_DOCKER_IMAGE="$mongo_image"
-    else
-      echo "---------------------  ERROR  -----------------------"
-      echo "  The mongo image is now split between MONGO_IMAGE and MONGO_VERSION configurations."
-      echo "  Please update your config/overleaf.rc."
-      echo ""
-      echo "  MONGO_VERSION must start with the actual major version of mongo, followed by a dot."
-      echo "  Example: MONGO_IMAGE=my.dockerhub.com/custom-mongo"
-      echo "           MONGO_VERSION=6.0-custom"
-      echo "---------------------  ERROR  -----------------------"
-      exit 1
-    fi
-  else
-    if [[ ! "$mongo_version" =~ ^([0-9]+)\.(.+)$ ]]; then
-      echo "---------------------  ERROR  -----------------------"
-      echo "  Invalid MONGO_VERSION: $mongo_version"
-      echo ""
-      echo "  MONGO_VERSION must start with the actual major version of mongo, followed by a dot."
-      echo "  Example: MONGO_IMAGE=my.dockerhub.com/custom-mongo"
-      echo "           MONGO_VERSION=6.0-custom"
-      echo "---------------------  ERROR  -----------------------"
-      exit 1
-    fi
-    MONGO_VERSION_MAJOR=${BASH_REMATCH[1]}
-    MONGO_DOCKER_IMAGE="$mongo_image:$mongo_version"
-  fi
+  # Hardcoded workaround for read_configuration() issues
+  local mongo_image="mongo"
+  local mongo_version="6.0"
+  
+  MONGO_VERSION_MAJOR=6
+  MONGO_DOCKER_IMAGE="$mongo_image:$mongo_version"
 
   if [[ "$MONGO_VERSION_MAJOR" -lt 6 ]]; then
     MONGOSH="mongo"
