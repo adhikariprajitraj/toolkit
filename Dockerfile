@@ -4,41 +4,53 @@ FROM sharelatex/sharelatex:5.5.4
 # Install additional LaTeX packages (only packages that exist and aren't already installed)
 RUN tlmgr update --self && \
     tlmgr install \
-    xcolor \
-    listings \
-    tcolorbox \
-    siunitx \
-    titlesec \
-    float \
-    caption \
-    booktabs \
-    pgfplots \
+    amsmath \
+    amssymb \
+    amsthm \
+    array \
+    adjustbox \
+    algorithm2e \
     biber \
     biblatex \
-    enumitem \
-    multirow \
-    algorithm2e \
-    cite \
-    setspace \
-    parskip \
-    microtype \
-    csquotes \
-    mathtools \
-    physics \
-    units \
-    gensymb \
-    mhchem \
-    chemfig \
-    circuitikz \
-    xltabular \
-    cleveref \
-    adjustbox \
+    booktabs \
+    caption \
     changepage \
-    subfigure \
-    textpos \
+    chemfig \
+    cite \
+    circuitikz \
+    cleveref \
+    colortbl \
+    csquotes \
+    enumitem \
+    fancyhdr \
+    float \
     framed \
+    gensymb \
+    listings \
+    lmodern \
+    mathtools \
+    mhchem \
+    microtype \
+    multirow \
+    parskip \
     pdfcol \
-    && \
+    pgfplots \
+    physics \
+    placeins \
+    setspace \
+    siunitx \
+    subcaption \
+    subfigure \
+    tcolorbox \
+    textpos \
+    threeparttable \
+    tikz \
+    titlesec \
+    units \
+    xcolor \
+    xurl \
+    lastpage \
+    || true && \
     mktexlsr
 
 # Update font maps and rebuild formats
