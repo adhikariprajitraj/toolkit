@@ -1,5 +1,38 @@
 # Changelog
 
+## 2026-02-19
+### Added
+- Updated default [`version`](https://github.com/overleaf/toolkit/blob/master/lib/config-seed/version) to `6.1.2`.
+
+## 2026-02-02
+### Added
+- Updated default [`version`](https://github.com/overleaf/toolkit/blob/master/lib/config-seed/version) to `6.1.1`.
+
+## 2026-01-19
+### Added
+- Updated default [`version`](https://github.com/overleaf/toolkit/blob/master/lib/config-seed/version) to `6.1.0`.
+
+## 2025-11-17
+### Added
+- Updated default [`version`](https://github.com/overleaf/toolkit/blob/master/lib/config-seed/version) to `6.0.1`.
+
+## 2025-10-29
+### Added
+- Updated default [`version`](https://github.com/overleaf/toolkit/blob/master/lib/config-seed/version) to `6.0.0`.
+
+  :warning: This is a major release. Please check the [release notes](https://docs.overleaf.com/on-premises/release-notes/release-notes-6.x.x) for details.
+
+- Updated mongo default version to `8.0`.
+- Updated redis default version to `7.4`.
+
+## 2025-10-29
+### Added
+- Updated default [`version`](https://github.com/overleaf/toolkit/blob/master/lib/config-seed/version) to `5.5.6`.
+
+## 2025-10-23
+### Added
+- Updated default [`version`](https://github.com/overleaf/toolkit/blob/master/lib/config-seed/version) to `5.5.5`.
+
 ## 2025-08-14
 ### Changed
 - Upgrade default nginx version for TLS proxy to version 1.28. If you configured a custom `NGINX_IMAGE`, please upgrade it.
